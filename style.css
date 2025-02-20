@@ -1,0 +1,62 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #182224, #29d10f);
+  color: rgba(99, 215, 27, 0.895);
+}
+
+#countdown {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px 60px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+#timer {
+  font-size: 3rem;
+  letter-spacing: 3px;
+}
+.timer-unit {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  #timer {
+    font-size: 2rem;
+  }
+  .timer-unit {
+    font-size: 1rem;
+  }
+}
+
+/* Анімація для сигналізації про наближення події */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    background-color: rgb(6, 180, 35);
+    border-radius: 7px;
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: rgb(4, 109, 22);
+    border-radius: 7px;
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgb(4, 109, 22);
+    border-radius: 7px;
+  }
+}
+
+/* Клас, який додається, коли подія наближається */
+.event-approaching {
+  animation: pulse 1s infinite;
+}
