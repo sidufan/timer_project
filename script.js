@@ -1,11 +1,9 @@
-const currentDate = new Date();
-console.log(currentDate); // реєструє поточну дату та час на консолі
-
-const targetDate = new Date("2025-10-01T13:26:10");
-console.log(targetDate);
-
-const difference = targetDate - currentDate;
-console.log(difference);
+// Отримуємо елементи один раз, а не на кожному оновленні
+const daysElement = document.getElementById("days");
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
+const timerElement = document.getElementById("timer");
 
 function updateCountdown() {
   const currentTime = new Date();
@@ -13,30 +11,22 @@ function updateCountdown() {
 
   if (difference < 0) {
     clearInterval(interval);
-    document.getElementById("timer").innerText = "The event has started!";
-    // Видаляємо анімацію, якщо час завершився
-    document.getElementById("timer").classList.remove("event-approaching");
+    timerElement.innerText = "The event has started!";
+    timerElement.classList.remove("event-approaching");
     return;
   }
 
   const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
-  document.getElementById("seconds").innerText = seconds;
+  daysElement.innerText = days;
+  hoursElement.innerText = hours;
+  minutesElement.innerText = minutes;
+  secondsElement.innerText = seconds;
 
-  if (days <= 1) {
-    document.getElementById("timer").classList.add("event-approaching");
-  } else {
-    // Якщо більше ніж день, видаляємо анімацію, якщо вона є
-    document.getElementById("timer").classList.remove("event-approaching");
-  }
+  timerElement.classList.toggle("event-approaching", days <= 1);
 }
 
 const interval = setInterval(updateCountdown, 1000);
