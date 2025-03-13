@@ -59,4 +59,5 @@ body {
 /* Клас, який додається, коли подія наближається */
 .event-approaching {
   animation: pulse 1s infinite;
+  will-change: transform, background-color;
 }
