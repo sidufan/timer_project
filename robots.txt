@@ -1,0 +1,9 @@
+User-agent: *  
+Disallow: /admin/  
+Disallow: /search/  
+Disallow: /private/  
+
+Allow: /articles/  
+Allow: /categories/  
+
+Sitemap: https://yourwebsite.com/sitemap.xml
